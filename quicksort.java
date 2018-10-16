@@ -40,7 +40,7 @@ public class quicksort<array> {
 		sort(a, j+1, hi);
 	}
 
-	// partition the subarray client[lo..hi] so that client[lo..j-1] <= client[j] <= client[j+1..hi]
+	// partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
 	// and return the index j.
 	public static int partition(Comparable[] a, int lo, int hi) {
 		int i = lo;
