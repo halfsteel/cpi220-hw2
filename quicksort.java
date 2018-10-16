@@ -32,7 +32,7 @@ public class quicksort<array> {
 		return a;
 	}
 
-	// quicksort the subarray from client[lo] to client[hi]
+	// quicksort the subarray from a[lo] to a[hi]
 	private static void sort(Comparable[] a, int lo, int hi) { 
 		if (hi <= lo) return;
 		int j = partition(a, lo, hi);
