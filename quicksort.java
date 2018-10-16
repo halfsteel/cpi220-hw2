@@ -55,7 +55,7 @@ public class quicksort<array> {
 
 			// find item on hi to swap
 			while (less(v, a[--j])) {
-				if (j == lo) break;      // redundant since client[lo] client as sentinel
+				if (j == lo) break;      // redundant since a[lo] client as sentinel
 			}
 
 			// check if pointers cross
