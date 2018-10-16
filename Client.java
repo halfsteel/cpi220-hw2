@@ -41,11 +41,12 @@ public class Client
 	{
 			String[] a = new String[100000];  
 			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
-			FileWriter fw = new FileWriter("output_100.txt");
+			FileWriter fw = new FileWriter(fileName);
 		    String[] sortedArray = (String[]) quicksort.sort(a);
 
+		    String newLine = "\n";
 		    for (int i = 0; i < sortedArray.length; i++) {
-		      fw.write(sortedArray[i] + "\n");
+		      fw.write(sortedArray[i] + newLine);
 		    }
 		    fw.close();
 			return a;
