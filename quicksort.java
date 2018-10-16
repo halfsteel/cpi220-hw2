@@ -1,13 +1,9 @@
 package homework2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class quicksort<array> {
 
@@ -32,7 +28,7 @@ public class quicksort<array> {
 		return a;
 	}
 
-	// quicksort the subarray from client[lo] to client[hi]
+	// quicksort the subarray from a[lo] to a[hi]
 	private static void sort(Comparable[] a, int lo, int hi) { 
 		if (hi <= lo) return;
 		int j = partition(a, lo, hi);
@@ -40,7 +36,7 @@ public class quicksort<array> {
 		sort(a, j+1, hi);
 	}
 
-	// partition the subarray client[lo..hi] so that client[lo..j-1] <= client[j] <= client[j+1..hi]
+	// partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
 	// and return the index j.
 	public static int partition(Comparable[] a, int lo, int hi) {
 		int i = lo;
@@ -55,7 +51,7 @@ public class quicksort<array> {
 
 			// find item on hi to swap
 			while (less(v, a[--j])) {
-				if (j == lo) break;      // redundant since client[lo] client as sentinel
+				if (j == lo) break;      // redundant since a[lo] acts as sentinel
 			}
 
 			// check if pointers cross
@@ -64,10 +60,10 @@ public class quicksort<array> {
 			exch(a, i, j);
 		}
 
-		// put partitioning item v at client[j]
+		// put partitioning item v at a[j]
 		exch(a, lo, j);
 
-		// now, client[lo .. j-1] <= client[j] <= client[j+1 .. hi]
+		// now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
 		return j;
 	}
 
