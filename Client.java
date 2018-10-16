@@ -40,6 +40,7 @@ public class Client
 	public static String[] writeLines() throws IOException
 	{
 			String[] a = new String[100000];  
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
 			FileWriter fw = new FileWriter("output_100.txt");
 		    String[] sortedArray = (String[]) quicksort.sort(a);
 
