@@ -51,7 +51,7 @@ public class quicksort<array> {
 
 			// find item on hi to swap
 			while (less(v, a[--j])) {
-				if (j == lo) break;      // redundant since a[lo] client as sentinel
+				if (j == lo) break;      // redundant since a[lo] acts as sentinel
 			}
 
 			// check if pointers cross
@@ -60,10 +60,10 @@ public class quicksort<array> {
 			exch(a, i, j);
 		}
 
-		// put partitioning item v at client[j]
+		// put partitioning item v at a[j]
 		exch(a, lo, j);
 
-		// now, client[lo .. j-1] <= client[j] <= client[j+1 .. hi]
+		// now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
 		return j;
 	}
 
