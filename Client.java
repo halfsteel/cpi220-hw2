@@ -44,9 +44,9 @@ public class Client
 			FileWriter fw = new FileWriter(fileName);
 		    String[] sortedArray = (String[]) quicksort.sort(a);
 
-		    String newLine = "\n";
+		    
 		    for (int i = 0; i < sortedArray.length; i++) {
-		      fw.write(sortedArray[i] + newLine);
+		      fw.write(sortedArray[i] + "\r\n");
 		    }
 		    fw.close();
 			return a;
