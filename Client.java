@@ -1,6 +1,7 @@
 package homework2;
 
 import java.io.IOException;
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,49 +9,132 @@ import java.io.FileWriter;
 
 public class Client
 {	
+	public static final char letter = input();
+	
 	public static void main(String[] a) throws IOException
 	{
 		a = new String[100000];
+		long timeStart = System.currentTimeMillis();
 		quicksort.sort(a);
+		long timeEnd = System.currentTimeMillis();
 		Client.writeLines();
+
+		System.out.println(timeEnd-timeStart);
+	}
+
+	public static final char input()
+	{
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Choose:\nA for arrayLength_10\nB for arrayLength_100\nC for arrayLength_1000\nD for arrayLength_10000\nE for arrayLength_100000");
+		final char letter = scan.next().trim().charAt(0);
+		scan.close();
+		return letter;
 	}
 	
-	public static String[] readLines() throws IOException 
+	public static Integer[] readLines() throws IOException
 	{
 
-        String[] array = new String[100];
-		/*char length = 'A';
-		switch(length) 
+		Integer[] array = new Integer[100000];
+		switch(letter) 
 		{
-		case 'A':*/
-		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_100.txt";
-		File file = new File(fileName);
-		FileReader fr = new FileReader(file);
-        BufferedReader br = new BufferedReader(fr);
-        
-       for(int i=0; i<array.length; i++) 
-       {
-        	array[i]=br.readLine();
-       }
-        br.close();
-	//}
-        return array;
-        }
-	
-	public static String[] writeLines() throws IOException
-	{
-			String[] a = new String[100000];  
-			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
-			FileWriter fw = new FileWriter(fileName);
-		    String[] sortedArray = (String[]) quicksort.sort(a);
+		case 'A':
+		{
+			array = new Integer[10];
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_10.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
 
-		    
-		    for (int i = 0; i < sortedArray.length; i++) {
-		      fw.write(sortedArray[i] + "\r\n");
-		    }
-		    fw.close();
-			return a;
-		
+			for(int i=0; i<array.length; i++) 
+			{
+				array[i]=Integer.parseInt(br.readLine());
+			}
+			br.close();
+			break;
+		}
+		case 'B':
+		{
+			array = new Integer[100];
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_100.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+
+			for(int i=0; i<array.length; i++) 
+			{
+				array[i]=Integer.parseInt(br.readLine());
+			}
+			br.close();
+			break;
+		}
+			
+		case 'C':
+		{
+			array = new Integer[1000];
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_1000.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+
+			for(int i=0; i<array.length; i++) 
+			{
+				array[i]=Integer.parseInt(br.readLine());
+			}
+			br.close();
+			break;
+		}
+			
+		case 'D':
+		{
+			array = new Integer[10000];
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_10000.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+
+			for(int i=0; i<array.length; i++) 
+			{
+				array[i]=Integer.parseInt(br.readLine());
+			}
+			br.close();
+			break;
+		}
+			
+		case 'E':
+		{
+			array = new Integer[100000];
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_100000.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+
+			for(int i=0; i<array.length; i++) 
+			{
+				array[i]=Integer.parseInt(br.readLine());
+			}
+			br.close();
+			break;
+		}
+		default:
+			System.out.println("Invalid choice");
+		}
+		return array;
+	}
+
+	public static Integer[] writeLines() throws IOException
+	{
+		Integer[] a = new Integer[100000];  
+		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
+		FileWriter fw = new FileWriter(fileName);
+		Integer[] sortedArray = (Integer[]) quicksort.sort(a);
+
+
+		for (int i = 0; i < sortedArray.length; i++) {
+			fw.write(sortedArray[i] + "\r\n");
+		}
+		fw.close();
+		return a;
+
 	}
 
 	private static quicksort quicksort = new quicksort();
@@ -61,5 +145,5 @@ public class Client
 	public void setQuicksort(quicksort quicksort) {
 		Client.quicksort = quicksort;
 	}
-	
+
 }

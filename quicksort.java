@@ -1,16 +1,20 @@
 package homework2;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class quicksort<array> {
 
 	private Client client = new Client();
 
-	public static String[] getClient() throws IOException {
-		
+	public static Integer[] getClient() throws IOException {
+
 		return Client.readLines();
 	}
 
@@ -18,29 +22,29 @@ public class quicksort<array> {
 		this.client = client;
 	}
 
-	public Comparable[] sort(Comparable[] a) throws IOException {
-		
-		a = RandomizeArray(quicksort.getClient());
-		sort(a, 0, a.length - 1);
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}
-		return a;
-	}
-
-	// quicksort the subarray from a[lo] to a[hi]
-	private static void sort(Comparable[] a, int lo, int hi) { 
+	// quicksort the subarray from client[lo] to client[hi]
+	private static void sort(Comparable[] a, Integer lo, Integer hi) { 
 		if (hi <= lo) return;
-		int j = partition(a, lo, hi);
+		Integer j = partition(a, lo, hi);
 		sort(a, lo, j-1);
 		sort(a, j+1, hi);
 	}
 
-	// partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
+	public Comparable[] sort(Comparable[] a) throws IOException {
+
+		a = RandomizeArray(quicksort.getClient());
+		sort(a, 0, a.length - 1);
+		/*for (Integer i = 0; i < a.length; i++) {
+			System.out.println(a[i]);
+		}*/
+		return a;
+	}
+
+	// partition the subarray client[lo..hi] so that client[lo..j-1] <= client[j] <= client[j+1..hi]
 	// and return the index j.
-	public static int partition(Comparable[] a, int lo, int hi) {
-		int i = lo;
-		int j = hi + 1;
+	public static Integer partition(Comparable[] a, Integer lo, Integer hi) {
+		Integer i = lo;
+		Integer j = hi + 1;
 		Comparable v = a[lo];
 		while (true) { 
 
@@ -51,7 +55,7 @@ public class quicksort<array> {
 
 			// find item on hi to swap
 			while (less(v, a[--j])) {
-				if (j == lo) break;      // redundant since a[lo] acts as sentinel
+				if (j == lo) break;      // redundant since client[lo] client as sentinel
 			}
 
 			// check if pointers cross
@@ -60,36 +64,11 @@ public class quicksort<array> {
 			exch(a, i, j);
 		}
 
-		// put partitioning item v at a[j]
+		// put partitioning item v at client[j]
 		exch(a, lo, j);
 
-		// now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
+		// now, client[lo .. j-1] <= client[j] <= client[j+1 .. hi]
 		return j;
-	}
-
-	/**
-	 * Rearranges the array so that {@code client[k]} contains the kth smallest key;
-	 * {@code client[0]} through {@code client[k-1]} are less than (or equal to) {@code client[k]}; and
-	 * {@code client[k+1]} through {@code client[n-1]} are greater than (or equal to) {@code client[k]}.
-	 *
-	 * @param  a the array
-	 * @param  k the rank of the key
-	 * @return the key of rank {@code k}
-	 * @throws IllegalArgumentException unless {@code 0 <= k < client.length}
-	 */
-	public static Comparable select(Comparable[] a, int k) {
-		if (k < 0 || k >= a.length) {
-			throw new IllegalArgumentException("index is not between 0 and " + a.length + ": " + k);
-		}
-		RandomizeArray(a);
-		int lo = 0, hi = a.length - 1;
-		while (hi > lo) {
-			int i = partition(a, lo, hi);
-			if      (i > k) hi = i - 1;
-			else if (i < k) lo = i + 1;
-			else return a[i];
-		}
-		return a[lo];
 	}
 
 
@@ -115,7 +94,7 @@ public class quicksort<array> {
 	}
 
 	// exchange client[i] client client[j]
-	private static void exch(Object[] a, int i, int j) {
+	private static void exch(Object[] a, Integer i, Integer j) {
 		Object swap = a[i];
 		a[i] = a[j];
 		a[j] = swap;
@@ -129,35 +108,12 @@ public class quicksort<array> {
 		return isSorted(a, 0, a.length - 1);
 	}
 
-	private static boolean isSorted(Comparable[] a, int lo, int hi) {
-		for (int i = lo + 1; i <= hi; i++)
+	private static boolean isSorted(Comparable[] a, Integer lo, Integer hi) {
+		for (Integer i = lo + 1; i <= hi; i++)
 			if (less(a[i], a[i-1])) return false;
 		return true;
 	}
-
-
-	// print array to standard output
-	/*static void show(Comparable[] a) {
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}
-	}*/
-
-	/**
-	 * Reads in a sequence of strings from standard input; quicksorts them; 
-	 * and prints them to standard output in ascending order. 
-	 * Shuffles the array and then prints the strings again to
-	 * standard output, but this time, using the select method.
-	 *
-	 * @param args the command-line arguments
-	 * @throws IOException 
-	 */
-	/*public static void main(String[] args) throws IOException {
-		quicksort.sort(getClient());
-	}*/
-
-
-	
 }
+
 
 
