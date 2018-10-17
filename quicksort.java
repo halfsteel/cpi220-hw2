@@ -43,33 +43,19 @@ public class quicksort<array> {
 	// partition the subarray client[lo..hi] so that client[lo..j-1] <= client[j] <= client[j+1..hi]
 	// and return the index j.
 	public static Integer partition(Comparable[] a, Integer lo, Integer hi) {
-		Integer i = lo;
-		Integer j = hi + 1;
-		Comparable v = a[lo];
-		while (true) { 
-
-			// find item on lo to swap
-			while (less(a[++i], v)) {
-				if (i == hi) break;
-			}
-
-			// find item on hi to swap
-			while (less(v, a[--j])) {
-				if (j == lo) break;      // redundant since client[lo] client as sentinel
-			}
-
-			// check if pointers cross
-			if (i >= j) break;
-
-			exch(a, i, j);
-		}
-
-		// put partitioning item v at client[j]
-		exch(a, lo, j);
-
-		// now, client[lo .. j-1] <= client[j] <= client[j+1 .. hi]
-		return j;
-	}
+        Integer i = lo -1;
+        Comparable v = a[hi];
+        for (Integer j = lo; j <= hi - 1; j++){
+            if(lessEquals(a[j],v)){
+                i++;
+                exch(a, i, j);
+            }
+        }
+        // put partitioning item v at client[j]
+        exch(a, i+1, hi);
+        // now, client[lo .. j-1] <= client[j] <= client[j+1 .. hi]
+        return (i+1);
+    }
 
 
 
@@ -88,10 +74,9 @@ public class quicksort<array> {
 	 ***************************************************************************/
 
 	// is v < w ?
-	private static boolean less(Comparable v, Comparable w) {
-		if (v == w) return false;   // optimization when reference equals
-		return v.compareTo(w) < 0;
-	}
+	private static boolean lessEquals(Comparable v, Comparable w) {
+     return v.compareTo(w) < 0;
+ }
 
 	// exchange client[i] client client[j]
 	private static void exch(Object[] a, Integer i, Integer j) {
@@ -110,7 +95,7 @@ public class quicksort<array> {
 
 	private static boolean isSorted(Comparable[] a, Integer lo, Integer hi) {
 		for (Integer i = lo + 1; i <= hi; i++)
-			if (less(a[i], a[i-1])) return false;
+			if (lessEquals(a[i], a[i-1])) return false;
 		return true;
 	}
 }
