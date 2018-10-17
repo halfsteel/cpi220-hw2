@@ -13,28 +13,31 @@ public class Client
 	
 	public static void main(String[] a) throws IOException
 	{
-		a = new String[100000];
+		a = new String[1000000];
 		long timeStart = System.currentTimeMillis();
 		quicksort.sort(a);
 		long timeEnd = System.currentTimeMillis();
 		Client.writeLines();
 
-		System.out.println(timeEnd-timeStart);
+		System.out.print("The run time of this sort was: ");
+		System.out.print(timeEnd-timeStart);
+		System.out.println(" milliseconds");
 	}
 
 	public static final char input()
 	{
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Choose:\nA for arrayLength_10\nB for arrayLength_100\nC for arrayLength_1000\nD for arrayLength_10000\nE for arrayLength_100000");
-		final char letter = scan.next().trim().charAt(0);
+		char letter = scan.next().trim().charAt(0);
 		scan.close();
+		letter = Character.toUpperCase(letter);
 		return letter;
 	}
 	
 	public static Integer[] readLines() throws IOException
 	{
 
-		Integer[] array = new Integer[100000];
+		Integer[] array = new Integer[1000000];
 		switch(letter) 
 		{
 		case 'A':
@@ -123,7 +126,7 @@ public class Client
 
 	public static Integer[] writeLines() throws IOException
 	{
-		Integer[] a = new Integer[100000];  
+		Integer[] a = new Integer[1000000];  
 		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
 		FileWriter fw = new FileWriter(fileName);
 		Integer[] sortedArray = (Integer[]) quicksort.sort(a);
