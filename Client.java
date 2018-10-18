@@ -14,14 +14,14 @@ public class Client
 	public static void main(String[] a) throws IOException
 	{
 		a = new String[1000000];
-		long timeStart = System.currentTimeMillis();
+		long timeStart = System.nanoTime();
 		quicksort.sort(a);
-		long timeEnd = System.currentTimeMillis();
+		long timeEst = System.nanoTime() - timeStart;
 		Client.writeLines();
 
 		System.out.print("The run time of this sort was: ");
-		System.out.print(timeEnd-timeStart);
-		System.out.println(" milliseconds");
+		System.out.print(timeEst);
+		System.out.println(" nanoseconds");
 	}
 
 	public static final char input()
