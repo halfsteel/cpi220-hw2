@@ -10,7 +10,7 @@ import java.io.FileWriter;
 public class Client
 {	
 	public static final char letter = input();
-	
+
 	public static void main(String[] a) throws IOException
 	{
 		a = new String[1000000];
@@ -33,7 +33,7 @@ public class Client
 		letter = Character.toUpperCase(letter);
 		return letter;
 	}
-	
+
 	public static Integer[] readLines() throws IOException
 	{
 
@@ -70,7 +70,7 @@ public class Client
 			br.close();
 			break;
 		}
-			
+
 		case 'C':
 		{
 			array = new Integer[1000];
@@ -86,7 +86,7 @@ public class Client
 			br.close();
 			break;
 		}
-			
+
 		case 'D':
 		{
 			array = new Integer[10000];
@@ -102,7 +102,7 @@ public class Client
 			br.close();
 			break;
 		}
-			
+
 		case 'E':
 		{
 			array = new Integer[100000];
@@ -127,17 +127,75 @@ public class Client
 	public static Integer[] writeLines() throws IOException
 	{
 		Integer[] a = new Integer[1000000];  
-		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
-		FileWriter fw = new FileWriter(fileName);
-		Integer[] sortedArray = (Integer[]) quicksort.sort(a);
+		switch(letter) 
+		{
+		case 'A':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10.txt";
+			FileWriter fw = new FileWriter(fileName);
+			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
 
 
-		for (int i = 0; i < sortedArray.length; i++) {
-			fw.write(sortedArray[i] + "\r\n");
+			for (int i = 0; i < sortedArray.length; i++) {
+				fw.write(sortedArray[i] + "\r\n");
+			}
+			fw.close();
+			break;
 		}
-		fw.close();
-		return a;
+		case 'B':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
+			FileWriter fw = new FileWriter(fileName);
+			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
 
+
+			for (int i = 0; i < sortedArray.length; i++) {
+				fw.write(sortedArray[i] + "\r\n");
+			}
+			fw.close();
+			break;
+		}
+		case 'C':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_1000.txt";
+			FileWriter fw = new FileWriter(fileName);
+			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
+
+
+			for (int i = 0; i < sortedArray.length; i++) {
+				fw.write(sortedArray[i] + "\r\n");
+			}
+			fw.close();
+			break;
+		}
+		case 'D':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10000.txt";
+			FileWriter fw = new FileWriter(fileName);
+			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
+
+
+			for (int i = 0; i < sortedArray.length; i++) {
+				fw.write(sortedArray[i] + "\r\n");
+			}
+			fw.close();
+			break;
+		}
+		case 'E':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100000.txt";
+			FileWriter fw = new FileWriter(fileName);
+			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
+
+
+			for (int i = 0; i < sortedArray.length; i++) {
+				fw.write(sortedArray[i] + "\r\n");
+			}
+			fw.close();
+			break;
+		}
+		}
+		return a;
 	}
 
 	private static quicksort quicksort = new quicksort();
