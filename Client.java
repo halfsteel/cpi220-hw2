@@ -211,8 +211,8 @@ public class Client
 	public static String compareFile(String output, String expected)throws Exception 
 	{
 
-		String yes = "they are the same two files";
-		String no = "they are not the same two files";
+		String yes = "The output is the same as the expected file";
+		String no = "The output is not the same as the expected file";
 		boolean compare = true;
 		switch(letter) 
 		{
