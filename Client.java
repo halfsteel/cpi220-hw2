@@ -1,27 +1,26 @@
 package homework2;
 
-import java.io.IOException;
-import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.*;
+
 
 public class Client
 {	
 	public static final char letter = input();
 
-	public static void main(String[] a) throws IOException
+	public static void main(String[] a) throws Exception
 	{
-		a = new String[1000000];
 		long timeStart = System.nanoTime();
 		quicksort.sort(a);
 		long timeEst = System.nanoTime() - timeStart;
+		
 		Client.writeLines();
 
 		System.out.print("The run time of this sort was: ");
 		System.out.print(timeEst);
 		System.out.println(" nanoseconds");
+
+		System.out.println(Client.compareFile(null, null));
 	}
 
 	public static final char input()
@@ -196,6 +195,136 @@ public class Client
 		}
 		}
 		return a;
+	}
+
+	public static String compareFile(String output, String expected)throws Exception 
+	{
+
+		String yes = "they are the same two files";
+		String no = "they are not the same two files";
+		boolean compare = true;
+		switch(letter) 
+		{
+		case 'A':
+		{
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10.txt";
+		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10.txt";
+
+		FileReader fr1 = new FileReader(output);
+		FileReader fr2 = new FileReader(expected);
+
+		BufferedReader br1 = new BufferedReader(fr1);
+		BufferedReader br2 = new BufferedReader(fr2);
+
+		String line1 = null;
+		String line2 = null;
+		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+		{
+			if (!line1.equalsIgnoreCase(line2))  
+				compare = false;
+			else 
+				compare = true;   
+		}
+		br1.close();
+		br2.close();
+		}
+		case 'B':
+		{
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
+		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100.txt";
+
+		FileReader fr1 = new FileReader(output);
+		FileReader fr2 = new FileReader(expected);
+
+		BufferedReader br1 = new BufferedReader(fr1);
+		BufferedReader br2 = new BufferedReader(fr2);
+
+		String line1 = null;
+		String line2 = null;
+		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+		{
+			if (!line1.equalsIgnoreCase(line2))  
+				compare = false;
+			else 
+				compare = true;   
+		}
+		br1.close();
+		br2.close();
+		}
+		case 'C':
+		{
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_1000.txt";
+		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_1000.txt";
+
+		FileReader fr1 = new FileReader(output);
+		FileReader fr2 = new FileReader(expected);
+
+		BufferedReader br1 = new BufferedReader(fr1);
+		BufferedReader br2 = new BufferedReader(fr2);
+
+		String line1 = null;
+		String line2 = null;
+		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+		{
+			if (!line1.equalsIgnoreCase(line2))  
+				compare = false;
+			else 
+				compare = true;   
+		}
+		br1.close();
+		br2.close();
+		}
+		case 'D':
+		{
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10000.txt";
+		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10000.txt";
+
+		FileReader fr1 = new FileReader(output);
+		FileReader fr2 = new FileReader(expected);
+
+		BufferedReader br1 = new BufferedReader(fr1);
+		BufferedReader br2 = new BufferedReader(fr2);
+
+		String line1 = null;
+		String line2 = null;
+		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+		{
+			if (!line1.equalsIgnoreCase(line2))  
+				compare = false;
+			else 
+				compare = true;   
+		}
+		br1.close();
+		br2.close();
+		}
+		case 'E':
+		{
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100000.txt";
+		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100000.txt";
+
+		FileReader fr1 = new FileReader(output);
+		FileReader fr2 = new FileReader(expected);
+
+		BufferedReader br1 = new BufferedReader(fr1);
+		BufferedReader br2 = new BufferedReader(fr2);
+
+		String line1 = null;
+		String line2 = null;
+		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+		{
+			if (!line1.equalsIgnoreCase(line2))  
+				compare = false;
+			else 
+				compare = true;   
+		}
+		br1.close();
+		br2.close();
+		}
+		}
+		if (compare==true)
+			return yes;
+		else
+			return no;
 	}
 
 	private static quicksort quicksort = new quicksort();
