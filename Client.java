@@ -123,6 +123,17 @@ public class Client
 		return array;
 	}
 
+	public static void ArrayToStack() throws Exception {
+	        Integer[] a = new Integer[1000000];  
+	        a = Client.readLines();
+	        Stack stack = new Stack();
+	        for(Integer i : a){
+	            stack.push(i);
+	        }
+	        System.out.println("Non-Empty stack : "  + stack);
+	    }
+	
+	
 	public static Integer[] writeLines() throws IOException
 	{
 		Integer[] a = new Integer[1000000];  

@@ -11,15 +11,12 @@ import java.util.Random;
 
 public class quicksort<array> {
 
-	private Client client = new Client();
-
 	public static Integer[] getClient() throws IOException {
 
 		return Client.readLines();
 	}
 
 	public void setClient(Client client) {
-		this.client = client;
 	}
 
 	// quicksort the subarray from client[lo] to client[hi]
@@ -84,21 +81,6 @@ public class quicksort<array> {
 		a[i] = a[j];
 		a[j] = swap;
 	}
-
-
-	/***************************************************************************
-	 *  Check if array is sorted - useful for debugging.
-	 ***************************************************************************/
-	private static boolean isSorted(Comparable[] a) {
-		return isSorted(a, 0, a.length - 1);
-	}
-
-	private static boolean isSorted(Comparable[] a, Integer lo, Integer hi) {
-		for (Integer i = lo + 1; i <= hi; i++)
-			if (lessEquals(a[i], a[i-1])) return false;
-		return true;
-	}
 }
-
 
 

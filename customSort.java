@@ -3,15 +3,26 @@ package homework2;
 import java.util.Stack;
 
 public class customSort {
-	public static void main(String[] args) {
-        Stack<String> stack = new Stack<String>();
-        while (!System.in.isEmpty()) {
-            String item = System.in.readString();
-            if (!item.equals("-"))
-                stack.push(item);
-            else if (!stack.isEmpty())
-                System.out.print(stack.pop() + " ");
+
+    int arr[] = new int[100];
+
+    public void Sort() {
+        while (!isSorted)
+            Arrays.shuffle(arr);
+    }
+    
+    public boolean isSorted() {
+        int prev = 0;
+        boolean first = true;
+        for (int i : arr) {
+            if (first) {
+                first = !first;
+                prev = i;
+            }
+            else if ( prev > i ){
+                return false;
+            } 
         }
-        System.out.println("(" + stack.size() + " left on stack)");
+        return true;
     }
 }
