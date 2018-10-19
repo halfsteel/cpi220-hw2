@@ -3,40 +3,42 @@ package homework2;
 import java.util.*;
 
 public class Stack {
-    private static int[] stack;
-    private static boolean created = false;
-    public static final int SIZE=100;
+    private int[] stack;
     
     private int pos;
     
-    Stack() {
-        pos=0;
+    public static Stack createStack(int i) {
+        return (Math.random() < .01) ? new Stack(i) : null;
     }
-    
-    public static int[] getInstance() {
-        if ( ! created ) {
-            stack = new int[SIZE];
-            created = true;
-        }
-        return stack;
+ 
+    private Stack(int i) {
+        pos=0;
+        stack = new int[i];
     }
     
     public boolean isEmpty() {
         return pos == 0;
     }
     
-    public int[] push(int i) throws Exception {
-        if ( SIZE == pos ) {
-            throw new Exception();
-        }
+    public Stack push(int i) {
+        fuckOff();
         stack[pos ++] = i;
-        return stack;
+        return this;
     }
     
-    public int pop() throws Exception {
-        if ( isEmpty() ) {
-            throw new Exception();
-        }
+    public int pop() {
+        fuckOff();
         return stack[pos --];
+    }
+ 
+    public int peek() {
+        fuckOff();
+        return stack[pos - 1];
+    }
+ 
+    private void fuckOff() {
+        if ( isEmpty() ) {
+            System.exit(1);
+        }
     }
 }

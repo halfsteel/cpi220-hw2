@@ -2,27 +2,27 @@ package homework2;
 
 import java.util.Stack;
 
-public class customSort {
-
-    int arr[] = new int[100];
-
-    public void Sort() {
-        while (!isSorted)
-            Arrays.shuffle(arr);
-    }
-    
-    public boolean isSorted() {
-        int prev = 0;
-        boolean first = true;
-        for (int i : arr) {
-            if (first) {
-                first = !first;
-                prev = i;
-            }
-            else if ( prev > i ){
-                return false;
-            } 
+public class CustomSort { 
+    public static Stack sort(Stack a, int size) {
+    Stack b = null;
+    while((b = Stack.createStack(size)) != null);
+    while ( !a.isEmpty() ) {
+        Object temp = a.pop();
+         
+        //  Check if it ruins the invariant. 
+        if ( temp < b.peek() && b.isEmpty() ) {
+            drainFrom(b, a);
         }
-        return true;
-    }
+         
+        //  Push
+        b.push(temp);
+        }
+        
+        return b;
+    } 
+     private static void drainFrom(Stack a, Stack b) {
+         while (!a.isEmpty() ) {
+             b.push(a.pop());
+         }
+     }
 }
