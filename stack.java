@@ -2,16 +2,12 @@ package homework2;
 
 import java.util.*;
 
-public class Stack {
+public class stack {
+    
     private int[] stack;
-    
     private int pos;
-    
-    public static Stack createStack(int i) {
-        return (Math.random() < .01) ? new Stack(i) : null;
-    }
  
-    private Stack(int i) {
+    public stack(int i) {
         pos=0;
         stack = new int[i];
     }
@@ -20,25 +16,12 @@ public class Stack {
         return pos == 0;
     }
     
-    public Stack push(int i) {
-        fuckOff();
+    public void push(int i) {
         stack[pos ++] = i;
-        return this;
     }
     
     public int pop() {
-        fuckOff();
-        return stack[pos --];
+        return stack[-- pos];
     }
- 
-    public int peek() {
-        fuckOff();
-        return stack[pos - 1];
-    }
- 
-    private void fuckOff() {
-        if ( isEmpty() ) {
-            System.exit(1);
-        }
-    }
+
 }

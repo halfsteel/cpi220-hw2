@@ -16,10 +16,24 @@ public class Client
 		
 		Client.writeLines();
 
-		System.out.print("The run time of this sort was: ");
+		System.out.print("The run time of this quicksort was: ");
 		System.out.print(timeEst);
 		System.out.println(" nanoseconds");
 
+		stack b = null;
+		int size = 0;
+		Stack<Integer> input = null;
+		
+		timeStart = System.nanoTime();
+		CustomSort.sort(b,size);
+		timeEst = System.nanoTime() - timeStart;
+		
+		System.out.print("The run time of this CustomSort was: ");
+		System.out.print(timeEst);
+		System.out.println(" nanoseconds");
+		
+		Client.writeToStack();
+		
 		System.out.println(Client.compareFile(null, null));
 	}
 
@@ -123,14 +137,81 @@ public class Client
 		return array;
 	}
 
-	public static void ArrayToStack() throws Exception {
-	        Integer[] a = new Integer[1000000];  
-	        a = Client.readLines();
-	        Stack stack = new Stack();
-	        for(Integer i : a){
-	            stack.push(i);
-	        }
-	        System.out.println("Non-Empty stack : "  + stack);
+	public static Stack readToStack() throws Exception {
+		
+		Stack mystack = new Stack();
+		switch(letter)
+		{
+		case 'A':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_10.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			for(int i=0; i<10; i++) 
+			{
+				String line = br.readLine();
+				int stackLine = Integer.parseInt(line);
+				mystack.push(stackLine);
+			}
+		}
+		case 'B':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_100.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			for(int i=0; i<10; i++) 
+			{
+				String line = br.readLine();
+				int stackLine = Integer.parseInt(line);
+				mystack.push(stackLine);
+			}
+		}
+		case 'C':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_1000.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			for(int i=0; i<10; i++) 
+			{
+				String line = br.readLine();
+				int stackLine = Integer.parseInt(line);
+				mystack.push(stackLine);
+			}
+		}
+		case 'D':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_10000.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			for(int i=0; i<10; i++) 
+			{
+				String line = br.readLine();
+				int stackLine = Integer.parseInt(line);
+				mystack.push(stackLine);
+			}
+		}
+		case 'E':
+		{
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\arrayLength_100000.txt";
+			File file = new File(fileName);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			for(int i=0; i<10; i++) 
+			{
+				String line = br.readLine();
+				int stackLine = Integer.parseInt(line);
+				mystack.push(stackLine);
+			}
+		}
+		}
+		
+		//System.out.println(Arrays.toString(mystack.toArray()));
+			return mystack;
+	        
 	    }
 	
 	
@@ -141,7 +222,7 @@ public class Client
 		{
 		case 'A':
 		{
-			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10.txt";
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10.txt";
 			FileWriter fw = new FileWriter(fileName);
 			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
 
@@ -154,7 +235,7 @@ public class Client
 		}
 		case 'B':
 		{
-			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100.txt";
 			FileWriter fw = new FileWriter(fileName);
 			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
 
@@ -167,7 +248,7 @@ public class Client
 		}
 		case 'C':
 		{
-			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_1000.txt";
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_1000.txt";
 			FileWriter fw = new FileWriter(fileName);
 			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
 
@@ -180,7 +261,7 @@ public class Client
 		}
 		case 'D':
 		{
-			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10000.txt";
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10000.txt";
 			FileWriter fw = new FileWriter(fileName);
 			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
 
@@ -193,7 +274,7 @@ public class Client
 		}
 		case 'E':
 		{
-			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100000.txt";
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100000.txt";
 			FileWriter fw = new FileWriter(fileName);
 			Integer[] sortedArray = (Integer[]) quicksort.sort(a);
 
@@ -207,18 +288,35 @@ public class Client
 		}
 		return a;
 	}
+	
+	public static Stack writeToStack() throws Exception 
+	{
+		Stack mystack = new Stack();
+		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10.txt";
+		FileWriter fw = new FileWriter(fileName);
+		stack b = null;
+		int size = 0;
+		Stack<Integer> input = null;
+		mystack = CustomSort.sort(b,size);
 
+		
+			fw.write(mystack + "\r\n");
+		
+		fw.close();
+		return mystack;
+		
+	}
 	public static String compareFile(String output, String expected)throws Exception 
 	{
 
-		String yes = "The output is the same as the expected file";
-		String no = "The output is not the same as the expected file";
+		String yes = "The quicksort output is the same as the expected file";
+		String no = "The quicksort output is not the same as the expected file";
 		boolean compare = true;
 		switch(letter) 
 		{
 		case 'A':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10.txt";
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10.txt";
 		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10.txt";
 
 		FileReader fr1 = new FileReader(output);
@@ -238,10 +336,11 @@ public class Client
 		}
 		br1.close();
 		br2.close();
+		break;
 		}
 		case 'B':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100.txt";
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100.txt";
 		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100.txt";
 
 		FileReader fr1 = new FileReader(output);
@@ -261,10 +360,11 @@ public class Client
 		}
 		br1.close();
 		br2.close();
+		break;
 		}
 		case 'C':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_1000.txt";
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_1000.txt";
 		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_1000.txt";
 
 		FileReader fr1 = new FileReader(output);
@@ -284,10 +384,11 @@ public class Client
 		}
 		br1.close();
 		br2.close();
+		break;
 		}
 		case 'D':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_10000.txt";
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10000.txt";
 		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10000.txt";
 
 		FileReader fr1 = new FileReader(output);
@@ -307,10 +408,11 @@ public class Client
 		}
 		br1.close();
 		br2.close();
+		break;
 		}
 		case 'E':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\output_100000.txt";
+		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100000.txt";
 		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100000.txt";
 
 		FileReader fr1 = new FileReader(output);
@@ -330,6 +432,7 @@ public class Client
 		}
 		br1.close();
 		br2.close();
+		break;
 		}
 		}
 		if (compare==true)

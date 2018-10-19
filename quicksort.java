@@ -19,7 +19,6 @@ public class quicksort<array> {
 	public void setClient(Client client) {
 	}
 
-	// quicksort the subarray from client[lo] to client[hi]
 	private static void sort(Comparable[] a, Integer lo, Integer hi) { 
 		if (hi <= lo) return;
 		Integer j = partition(a, lo, hi);
@@ -31,14 +30,9 @@ public class quicksort<array> {
 
 		a = RandomizeArray(quicksort.getClient());
 		sort(a, 0, a.length - 1);
-		/*for (Integer i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}*/
 		return a;
 	}
 
-	// partition the subarray client[lo..hi] so that client[lo..j-1] <= client[j] <= client[j+1..hi]
-	// and return the index j.
 	public static Integer partition(Comparable[] a, Integer lo, Integer hi) {
         Integer i = lo -1;
         Comparable v = a[hi];
@@ -48,9 +42,7 @@ public class quicksort<array> {
                 exch(a, i, j);
             }
         }
-        // put partitioning item v at client[j]
         exch(a, i+1, hi);
-        // now, client[lo .. j-1] <= client[j] <= client[j+1 .. hi]
         return (i+1);
     }
 
@@ -66,16 +58,10 @@ public class quicksort<array> {
 		return (Comparable[]) randomArray;
 	}
 
-	/***************************************************************************
-	 *  Helper sorting functions.
-	 ***************************************************************************/
-
-	// is v < w ?
 	private static boolean lessEquals(Comparable v, Comparable w) {
      return v.compareTo(w) < 0;
  }
 
-	// exchange client[i] client client[j]
 	private static void exch(Object[] a, Integer i, Integer j) {
 		Object swap = a[i];
 		a[i] = a[j];
