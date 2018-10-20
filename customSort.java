@@ -21,7 +21,7 @@ public class CustomSort {
 			sorted.push(unsorted.pop());
 		}
 	}
-	System.out.println(Arrays.toString(sorted.toArray()));
+	//System.out.println(Arrays.toString(sorted.toArray()));
 	return sorted;
 	}
 }

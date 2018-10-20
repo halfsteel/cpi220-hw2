@@ -13,7 +13,7 @@ public class Client
 		long timeStart = System.nanoTime();
 		quicksort.sort(a);
 		long timeEst = System.nanoTime() - timeStart;
-		
+
 		Client.writeLines();
 
 		System.out.print("The run time of this quicksort was: ");
@@ -23,18 +23,21 @@ public class Client
 		stack b = null;
 		int size = 0;
 		Stack<Integer> input = null;
-		
+
 		timeStart = System.nanoTime();
 		CustomSort.sort(b,size);
 		timeEst = System.nanoTime() - timeStart;
-		
+
 		System.out.print("The run time of this CustomSort was: ");
 		System.out.print(timeEst);
 		System.out.println(" nanoseconds");
-		
+
 		Client.writeToStack();
-		
+
 		System.out.println(Client.compareFile(null, null));
+		String output = null;
+		String expected = null;
+		System.out.println(Client.compareStackFiles(output, expected));
 	}
 
 	public static final char input()
@@ -138,7 +141,7 @@ public class Client
 	}
 
 	public static Stack readToStack() throws Exception {
-		
+
 		Stack mystack = new Stack();
 		switch(letter)
 		{
@@ -154,6 +157,7 @@ public class Client
 				int stackLine = Integer.parseInt(line);
 				mystack.push(stackLine);
 			}
+			break;
 		}
 		case 'B':
 		{
@@ -161,12 +165,13 @@ public class Client
 			File file = new File(fileName);
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
-			for(int i=0; i<10; i++) 
+			for(int i=0; i<100; i++) 
 			{
 				String line = br.readLine();
 				int stackLine = Integer.parseInt(line);
 				mystack.push(stackLine);
 			}
+			break;
 		}
 		case 'C':
 		{
@@ -174,12 +179,13 @@ public class Client
 			File file = new File(fileName);
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
-			for(int i=0; i<10; i++) 
+			for(int i=0; i<1000; i++) 
 			{
 				String line = br.readLine();
 				int stackLine = Integer.parseInt(line);
 				mystack.push(stackLine);
 			}
+			break;
 		}
 		case 'D':
 		{
@@ -187,12 +193,13 @@ public class Client
 			File file = new File(fileName);
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
-			for(int i=0; i<10; i++) 
+			for(int i=0; i<10000; i++) 
 			{
 				String line = br.readLine();
 				int stackLine = Integer.parseInt(line);
 				mystack.push(stackLine);
 			}
+			break;
 		}
 		case 'E':
 		{
@@ -200,21 +207,21 @@ public class Client
 			File file = new File(fileName);
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
-			for(int i=0; i<10; i++) 
+			for(int i=0; i<100000; i++) 
 			{
 				String line = br.readLine();
 				int stackLine = Integer.parseInt(line);
 				mystack.push(stackLine);
 			}
+			break;
 		}
 		}
-		
-		//System.out.println(Arrays.toString(mystack.toArray()));
-			return mystack;
-	        
-	    }
-	
-	
+
+		return mystack;
+
+	}
+
+
 	public static Integer[] writeLines() throws IOException
 	{
 		Integer[] a = new Integer[1000000];  
@@ -288,23 +295,97 @@ public class Client
 		}
 		return a;
 	}
-	
+
 	public static Stack writeToStack() throws Exception 
 	{
 		Stack mystack = new Stack();
+		boolean compare = true;
+		switch(letter) 
+		
+		{
+		case 'A':
+		{
 		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10.txt";
 		FileWriter fw = new FileWriter(fileName);
 		stack b = null;
 		int size = 0;
 		Stack<Integer> input = null;
 		mystack = CustomSort.sort(b,size);
-
-		
-			fw.write(mystack + "\r\n");
-		
+		for (int i=0;i<10;i++)
+		{
+		Integer stackPosition = (Integer) mystack.get(i);
+		fw.write(stackPosition + "\r\n");
+		}
 		fw.close();
+		break;
+		}
+		case 'B':
+		{
+		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100.txt";
+		FileWriter fw = new FileWriter(fileName);
+		stack b = null;
+		int size = 0;
+		Stack<Integer> input = null;
+		mystack = CustomSort.sort(b,size);
+		for (int i=0;i<10;i++)
+		{
+		Integer stackPosition = (Integer) mystack.get(i);
+		fw.write(stackPosition + "\r\n");
+		}
+		fw.close();
+		break;
+		}
+		case 'C':
+		{
+		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_1000.txt";
+		FileWriter fw = new FileWriter(fileName);
+		stack b = null;
+		int size = 0;
+		Stack<Integer> input = null;
+		mystack = CustomSort.sort(b,size);
+		for (int i=0;i<10;i++)
+		{
+		Integer stackPosition = (Integer) mystack.get(i);
+		fw.write(stackPosition + "\r\n");
+		}
+		fw.close();
+		break;
+		}
+		case 'D':
+		{
+		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10000.txt";
+		FileWriter fw = new FileWriter(fileName);
+		stack b = null;
+		int size = 0;
+		Stack<Integer> input = null;
+		mystack = CustomSort.sort(b,size);
+		for (int i=0;i<10;i++)
+		{
+		Integer stackPosition = (Integer) mystack.get(i);
+		fw.write(stackPosition + "\r\n");
+		}
+		fw.close();
+		break;
+		}
+		case 'E':
+		{
+		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100000.txt";
+		FileWriter fw = new FileWriter(fileName);
+		stack b = null;
+		int size = 0;
+		Stack<Integer> input = null;
+		mystack = CustomSort.sort(b,size);
+		for (int i=0;i<10;i++)
+		{
+		Integer stackPosition = (Integer) mystack.get(i);
+		fw.write(stackPosition + "\r\n");
+		}
+		fw.close();
+		break;
+		}
+		}
 		return mystack;
-		
+
 	}
 	public static String compareFile(String output, String expected)throws Exception 
 	{
@@ -316,123 +397,258 @@ public class Client
 		{
 		case 'A':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10.txt";
-		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10.txt";
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10.txt";
 
-		FileReader fr1 = new FileReader(output);
-		FileReader fr2 = new FileReader(expected);
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
 
-		BufferedReader br1 = new BufferedReader(fr1);
-		BufferedReader br2 = new BufferedReader(fr2);
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
 
-		String line1 = null;
-		String line2 = null;
-		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
-		{
-			if (!line1.equalsIgnoreCase(line2))  
-				compare = false;
-			else 
-				compare = true;   
-		}
-		br1.close();
-		br2.close();
-		break;
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
 		}
 		case 'B':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100.txt";
-		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100.txt";
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100.txt";
 
-		FileReader fr1 = new FileReader(output);
-		FileReader fr2 = new FileReader(expected);
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
 
-		BufferedReader br1 = new BufferedReader(fr1);
-		BufferedReader br2 = new BufferedReader(fr2);
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
 
-		String line1 = null;
-		String line2 = null;
-		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
-		{
-			if (!line1.equalsIgnoreCase(line2))  
-				compare = false;
-			else 
-				compare = true;   
-		}
-		br1.close();
-		br2.close();
-		break;
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
 		}
 		case 'C':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_1000.txt";
-		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_1000.txt";
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_1000.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_1000.txt";
 
-		FileReader fr1 = new FileReader(output);
-		FileReader fr2 = new FileReader(expected);
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
 
-		BufferedReader br1 = new BufferedReader(fr1);
-		BufferedReader br2 = new BufferedReader(fr2);
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
 
-		String line1 = null;
-		String line2 = null;
-		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
-		{
-			if (!line1.equalsIgnoreCase(line2))  
-				compare = false;
-			else 
-				compare = true;   
-		}
-		br1.close();
-		br2.close();
-		break;
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
 		}
 		case 'D':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10000.txt";
-		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10000.txt";
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_10000.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10000.txt";
 
-		FileReader fr1 = new FileReader(output);
-		FileReader fr2 = new FileReader(expected);
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
 
-		BufferedReader br1 = new BufferedReader(fr1);
-		BufferedReader br2 = new BufferedReader(fr2);
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
 
-		String line1 = null;
-		String line2 = null;
-		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
-		{
-			if (!line1.equalsIgnoreCase(line2))  
-				compare = false;
-			else 
-				compare = true;   
-		}
-		br1.close();
-		br2.close();
-		break;
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
 		}
 		case 'E':
 		{
-		output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100000.txt";
-		expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100000.txt";
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\quick_output_100000.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100000.txt";
 
-		FileReader fr1 = new FileReader(output);
-		FileReader fr2 = new FileReader(expected);
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
 
-		BufferedReader br1 = new BufferedReader(fr1);
-		BufferedReader br2 = new BufferedReader(fr2);
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
 
-		String line1 = null;
-		String line2 = null;
-		while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
-		{
-			if (!line1.equalsIgnoreCase(line2))  
-				compare = false;
-			else 
-				compare = true;   
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
 		}
-		br1.close();
-		br2.close();
-		break;
+		}
+		if (compare==true)
+			return yes;
+		else
+			return no;
+	}
+
+	public static String compareStackFiles(String output, String expected)throws Exception 
+	{
+
+		String yes = "The CustomSort output is the same as the expected file";
+		String no = "The CustomSort output is not the same as the expected file";
+		boolean compare = true;
+		switch(letter) 
+		{
+		case 'A':
+		{
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10.txt";
+
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
+
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
+
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
+		}
+		case 'B':
+		{
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100.txt";
+
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
+
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
+
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
+		}
+		case 'C':
+		{
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_1000.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_1000.txt";
+
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
+
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
+
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
+		}
+		case 'D':
+		{
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10000.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_10000.txt";
+
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
+
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
+
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
+		}
+		case 'E':
+		{
+			output = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100000.txt";
+			expected = "C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\expected_output_100000.txt";
+
+			FileReader fr1 = new FileReader(output);
+			FileReader fr2 = new FileReader(expected);
+
+			BufferedReader br1 = new BufferedReader(fr1);
+			BufferedReader br2 = new BufferedReader(fr2);
+
+			String line1 = null;
+			String line2 = null;
+			while ((compare==true) &&((line1 = br1.readLine()) != null)&&((line2 = br2.readLine()) != null)) 
+			{
+				if (!line1.equalsIgnoreCase(line2))  
+					compare = false;
+				else 
+					compare = true;   
+			}
+			br1.close();
+			br2.close();
+			break;
 		}
 		}
 		if (compare==true)

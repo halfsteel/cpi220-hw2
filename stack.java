@@ -24,4 +24,9 @@ public class stack {
         return stack[-- pos];
     }
 
+	public static Integer get(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
