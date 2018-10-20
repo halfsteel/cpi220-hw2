@@ -1,39 +1,40 @@
 package homework2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.io.*;
+import java.util.*;
 
-public class quicksort<array> {
+public class quicksort<array> 
+{
 
-	public static Integer[] getClient() throws IOException {
-
+	public static Integer[] getClient() throws IOException 
+	{
 		return Client.readLines();
 	}
 
-	public void setClient(Client client) {
-	}
-
-	private static void sort(Comparable[] a, Integer lo, Integer hi) { 
+	private static void sort(Comparable[] a, Integer lo, Integer hi) 
+	{ 
 		if (hi <= lo) return;
 		Integer j = partition(a, lo, hi);
 		sort(a, lo, j-1);
 		sort(a, j+1, hi);
 	}
 
-	public Comparable[] sort(Comparable[] a) throws IOException {
-
-		a = RandomizeArray(quicksort.getClient());
+	public Comparable[] sort(Comparable[] a) throws IOException 
+	{
+		a = random(quicksort.getClient());
+		sort(a, 0, a.length - 1);
+		return a;
+	}
+	
+	public Comparable[] fixedSort(Comparable[] a) throws IOException 
+	{
+		a = random(Client.fixedArray());
 		sort(a, 0, a.length - 1);
 		return a;
 	}
 
-	public static Integer partition(Comparable[] a, Integer lo, Integer hi) {
+	public static Integer partition(Comparable[] a, Integer lo, Integer hi) 
+	{
         Integer i = lo -1;
         Comparable v = a[hi];
         for (Integer j = lo; j <= hi - 1; j++){
@@ -46,16 +47,12 @@ public class quicksort<array> {
         return (i+1);
     }
 
-
-
-	public static Comparable[] RandomizeArray(Comparable[] a){	
+	public static Comparable[] random(Comparable[] a){	
 
 		List<Comparable> list = Arrays.asList(a);
-
 		Collections.shuffle(list);
-		Object[] randomArray = list.toArray();
-
-		return (Comparable[]) randomArray;
+		Object[] random = list.toArray();
+		return (Comparable[]) random;
 	}
 
 	private static boolean lessEquals(Comparable v, Comparable w) {

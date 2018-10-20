@@ -38,6 +38,24 @@ public class Client
 		String output = null;
 		String expected = null;
 		System.out.println(Client.compareStackFiles(output, expected));
+
+		Integer[] fixed = new Integer[10];
+		fixed = (Integer[]) quicksort.fixedSort(a);
+		System.out.println("The sorted fixed array is: ");
+		for(int i=0; i<10; i++) 
+		{
+			System.out.print(fixed[i] + " ");
+		}
+		System.out.println();
+		
+		Stack<Integer> fixedStack = new Stack<>();
+		fixedStack = CustomSort.fixedStackSort(b, size);
+		System.out.println("The sorted fixed stack is: ");
+		for (int i=0;i<10;i++)
+		{
+			Integer stackPosition = (Integer) fixedStack.get(i);
+			System.out.print(stackPosition + " ");
+		}
 	}
 
 	public static final char input()
@@ -221,6 +239,26 @@ public class Client
 
 	}
 
+	public static Integer[] fixedArray() throws IOException
+	{
+		Integer[] a = {9,9,10,3,6,2,1,1,7,2};
+		return a;
+	}
+
+	public static Stack fixedStack() throws Exception {
+		Stack<Integer> fixed = new Stack<>();
+		fixed.push(9);
+		fixed.push(9);
+		fixed.push(10);
+		fixed.push(3);
+		fixed.push(6);
+		fixed.push(2);
+		fixed.push(1);
+		fixed.push(1);
+		fixed.push(7);
+		fixed.push(2);
+		return fixed;
+	}
 
 	public static Integer[] writeLines() throws IOException
 	{
@@ -301,87 +339,87 @@ public class Client
 		Stack mystack = new Stack();
 		boolean compare = true;
 		switch(letter) 
-		
+
 		{
 		case 'A':
 		{
-		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10.txt";
-		FileWriter fw = new FileWriter(fileName);
-		stack b = null;
-		int size = 0;
-		Stack<Integer> input = null;
-		mystack = CustomSort.sort(b,size);
-		for (int i=0;i<10;i++)
-		{
-		Integer stackPosition = (Integer) mystack.get(i);
-		fw.write(stackPosition + "\r\n");
-		}
-		fw.close();
-		break;
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10.txt";
+			FileWriter fw = new FileWriter(fileName);
+			stack b = null;
+			int size = 0;
+			Stack<Integer> input = null;
+			mystack = CustomSort.sort(b,size);
+			for (int i=0;i<10;i++)
+			{
+				Integer stackPosition = (Integer) mystack.get(i);
+				fw.write(stackPosition + "\r\n");
+			}
+			fw.close();
+			break;
 		}
 		case 'B':
 		{
-		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100.txt";
-		FileWriter fw = new FileWriter(fileName);
-		stack b = null;
-		int size = 0;
-		Stack<Integer> input = null;
-		mystack = CustomSort.sort(b,size);
-		for (int i=0;i<10;i++)
-		{
-		Integer stackPosition = (Integer) mystack.get(i);
-		fw.write(stackPosition + "\r\n");
-		}
-		fw.close();
-		break;
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100.txt";
+			FileWriter fw = new FileWriter(fileName);
+			stack b = null;
+			int size = 0;
+			Stack<Integer> input = null;
+			mystack = CustomSort.sort(b,size);
+			for (int i=0;i<10;i++)
+			{
+				Integer stackPosition = (Integer) mystack.get(i);
+				fw.write(stackPosition + "\r\n");
+			}
+			fw.close();
+			break;
 		}
 		case 'C':
 		{
-		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_1000.txt";
-		FileWriter fw = new FileWriter(fileName);
-		stack b = null;
-		int size = 0;
-		Stack<Integer> input = null;
-		mystack = CustomSort.sort(b,size);
-		for (int i=0;i<10;i++)
-		{
-		Integer stackPosition = (Integer) mystack.get(i);
-		fw.write(stackPosition + "\r\n");
-		}
-		fw.close();
-		break;
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_1000.txt";
+			FileWriter fw = new FileWriter(fileName);
+			stack b = null;
+			int size = 0;
+			Stack<Integer> input = null;
+			mystack = CustomSort.sort(b,size);
+			for (int i=0;i<10;i++)
+			{
+				Integer stackPosition = (Integer) mystack.get(i);
+				fw.write(stackPosition + "\r\n");
+			}
+			fw.close();
+			break;
 		}
 		case 'D':
 		{
-		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10000.txt";
-		FileWriter fw = new FileWriter(fileName);
-		stack b = null;
-		int size = 0;
-		Stack<Integer> input = null;
-		mystack = CustomSort.sort(b,size);
-		for (int i=0;i<10;i++)
-		{
-		Integer stackPosition = (Integer) mystack.get(i);
-		fw.write(stackPosition + "\r\n");
-		}
-		fw.close();
-		break;
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_10000.txt";
+			FileWriter fw = new FileWriter(fileName);
+			stack b = null;
+			int size = 0;
+			Stack<Integer> input = null;
+			mystack = CustomSort.sort(b,size);
+			for (int i=0;i<10;i++)
+			{
+				Integer stackPosition = (Integer) mystack.get(i);
+				fw.write(stackPosition + "\r\n");
+			}
+			fw.close();
+			break;
 		}
 		case 'E':
 		{
-		String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100000.txt";
-		FileWriter fw = new FileWriter(fileName);
-		stack b = null;
-		int size = 0;
-		Stack<Integer> input = null;
-		mystack = CustomSort.sort(b,size);
-		for (int i=0;i<10;i++)
-		{
-		Integer stackPosition = (Integer) mystack.get(i);
-		fw.write(stackPosition + "\r\n");
-		}
-		fw.close();
-		break;
+			String fileName="C:\\Users\\halfs\\eclipse-workspace\\homework2\\src\\homework2\\stack_output_100000.txt";
+			FileWriter fw = new FileWriter(fileName);
+			stack b = null;
+			int size = 0;
+			Stack<Integer> input = null;
+			mystack = CustomSort.sort(b,size);
+			for (int i=0;i<10;i++)
+			{
+				Integer stackPosition = (Integer) mystack.get(i);
+				fw.write(stackPosition + "\r\n");
+			}
+			fw.close();
+			break;
 		}
 		}
 		return mystack;
